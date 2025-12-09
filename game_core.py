@@ -198,7 +198,6 @@ class GoGame(AbstractBoardGame):
             return False, f"玩家 {'黑' if self.current_player == BLACK else '白'} 落子不合法：禁入点（无气）"
         
         # 4. 检查全局同型（打劫）- 简化版：对比上一手棋盘
-        # (严谨的打劫需要对比所有历史，这里对比上一手满足基本作业需求)
         if len(self.history) > 0:
             last_board = self.history[-1].board
             if self.board == last_board:
@@ -271,7 +270,6 @@ class GoGame(AbstractBoardGame):
     def judge_winner_area_scoring(self):
         """简单的数子法 (Area Scoring)"""
         # 注意：这里是简化的数子逻辑，真实的数子需要判断死活棋
-        # 第一阶段作业通常只要求“任何一种现行方法”，最简单的是统计盘面棋子数
         black_score = 0
         white_score = 0
         for r in range(self.size):
